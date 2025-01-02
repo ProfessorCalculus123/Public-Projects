@@ -1,12 +1,3 @@
-
-#MINI PC By Dante Rosini 
-#MIT License is often used for software, and while it allows others to use, modify, and distribute your work, 
-# it only requires them to include the copyright notice, however 
-# Please credit Dante Rosini as the original creator when using or distributing this work
-# This ensures Dante Rosini retains ownership rights, and others can't claim ownership of their work
-
-
-
 exit_choice = ""
 app = 0
 import os
@@ -159,36 +150,22 @@ def grad_calculators():
         global exit_choice, app
         app = 1
         print("Weighted_Calculator")
-        amount = (input("How many assignments: "))
-        if not amount.isdigit() or not (1 <= int(amount) <= 100):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", amount," IS NOT VALID, PLEASE START AGAIN")
-         return weighted_calc()
-        else: 
-            amount = int(amount)   
+        amount = int(input("How many assignments: "))
         index = 0 
         weight_dec_100 = 0
         final_grade = 0
         while index < amount:
-            weight = input("enter assignment weighting %: ")
-            if not weight.isdigit() or not (1 <= int(weight) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", weight, " IS NOT VALID, PLEASE START AGAIN")
-             return weighted_calc()
-            else: 
-             weight = int(weight)
-            grade = input("enter assignment grade: ")
-            if not grade.isdigit() or not (1 <= int(grade) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
-             return weighted_calc()
-            else: 
-             grade = int(grade)
+            weight = int(input("enter assignment weighting %: "))
+            grade = int(input("enter assignment grade: "))
             weight_dec = weight / 100 
             scaled_grade = weight_dec * grade
             final_grade += scaled_grade
             weight_dec_100 += weight_dec
             index += 1
+        if round(weight_dec_100, 2) != 1.00:
+            print("RESULT INVALID PLEASE START AGAIN") 
+            print(final_grade)
+            print(weight_dec_100)
         else:
             print(final_grade)
         exit_choice = input("Start Again: ")
@@ -197,36 +174,15 @@ def grad_calculators():
         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
             clear_console()
             return grad_calculators()
-        else: 
-            clear_console()
-            return grad_calculators()
         
 
     def grade_goal():
         global exit_choice, app
         app = 2
         print("Grade Goal Calculator")
-        grade = input("Enter current Grade: ")
-        if not grade.isdigit() or not (1 <= int(grade) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
-             return grade_goal()
-        else: 
-             grade = int(grade)
-        goal = input("Enter your goal grade: ")
-        if not goal.isdigit() or not (1 <= int(goal) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", goal, " IS NOT VALID, PLEASE START AGAIN")
-             return grade_goal()
-        else: 
-             goal = int(goal)
-        weight = input("Enter Weight Of Final Assignment: ")
-        if not weight.isdigit() or not (1 <= int(weight) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", weight, " IS NOT VALID, PLEASE START AGAIN")
-             return grade_goal()
-        else: 
-             weight = int(weight)
+        grade = int(input("Enter current Grade: "))
+        goal = int(input("Enter your goal grade: "))
+        weight = int(input("Enter Weight Of Final Assignment: "))
         weight_dec = (weight / 100)
         current_contribution = (1 - weight_dec) * grade 
         required_final_grade = (goal - current_contribution) / weight_dec
@@ -239,20 +195,12 @@ def grad_calculators():
         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
             clear_console()
             return grad_calculators()
-        else:
-           return grad_calculators()
 
     def gpa_calculator():
         global exit_choice, app
         app = 3
         print("GPA Calculator")
-        amount = input("How many subjects are you calculating for: ")
-        if not amount.isdigit():
-             clear_console()  # Clear the console if invalid
-             print("RESULT", amount, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_calculator()
-        else: 
-             amount = int(amount)
+        amount = int(input("How many subjects are you calculating for: "))
         index = 0
         subject1 = []
         gpa1 = []
@@ -260,18 +208,7 @@ def grad_calculators():
         grade1 = []
         while index < amount:
             subject = input("enter subject name: ")
-            if  subject.strip() == "":
-             clear_console()  # Clear the console if invalid
-             print("RESULT", subject, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_calculator()
-            grade = input("enter subject grade: ")
-            if not grade.isdigit() or not (1 <= int(grade) <= 100):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_calculator()
-            else: 
-             grade = int(grade)
-
+            grade = int(input("enter subject grade: "))
             if grade < 50:
                 gpa = 0
                 result = ("Fail")
@@ -327,35 +264,14 @@ def grad_calculators():
         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
             clear_console()
             return grad_calculators()
-        else:
-            grad_calculators()
 
     def gpa_goal():
         global exit_choice, app
         app = 4
-        print("GPA Goal Calculator") ###########continue
-        current_gpa = input("Enter Current GPA: ")
-        if  current_gpa.isalpha() or not (0 <= float(current_gpa) <= 4):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", current_gpa, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_goal()
-        else: 
-             current_gpa = float(current_gpa)
-        goal_gpa = input("Enter Goal GPA: ")
-        if  goal_gpa.isalpha() or not (0 <= float(goal_gpa) <= 4):
-             clear_console()  # Clear the console if invalid
-             print("RESULT", goal_gpa, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_goal()
-        else: 
-             goal_gpa = float(goal_gpa)
-        time_goal = input("How many semesters do you have to reach your goal: ")
-        if  time_goal.isalpha():
-             clear_console()  # Clear the console if invalid
-             print("RESULT", time_goal, " IS NOT VALID, PLEASE START AGAIN")
-             return gpa_goal()
-        else: 
-             time_goal= int(time_goal)
-        
+        print("GPA Goal Calculator")
+        current_gpa = float(input("Enter Current GPA: "))
+        goal_gpa = float(input("Enter Goal GPA: "))
+        time_goal = int(input("How many semesters do you have to reach your goal: "))
         adjusted_time = 1 + time_goal
         result_needed = (goal_gpa * adjusted_time - current_gpa) 
         result_final = round(result_needed / time_goal, 2)
@@ -372,8 +288,6 @@ def grad_calculators():
         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
             clear_console()
             return grad_calculators()
-        else: 
-            grad_calculators()
 
     print("1. Weighted Calculator")
     print("2. Grade Goal Calculator")
@@ -396,10 +310,6 @@ def grad_calculators():
     if option == 5:
         clear_console()
         return menu()
-    else: 
-        clear_console()
-        print("RESULT",option, " IS NOT VALID, PLEASE START AGAIN")
-        return grad_calculators()
     
 def games():    
                     def coin_flip():
@@ -419,8 +329,6 @@ def games():
                             coin_flip()
                         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
                             return games()
-                        else: 
-                            games()
 
                     def RPS():
                         global exit_choice, app
@@ -439,10 +347,6 @@ def games():
                             hand = "Paper"
                         elif player == 3:
                             hand = "Scissors"
-                        else:
-                         print("RESULT", player, " IS NOT VALID, PLEASE START AGAIN")
-                         clear_console()
-                         RPS()
 
                         import random
                         npc = ["Rock", "Paper", "Scissors"] 
@@ -466,8 +370,6 @@ def games():
                         elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
                             clear_console()
                             return games()
-                        else:
-                            games()
 
                     def RLGL():
                         import os
@@ -547,10 +449,6 @@ def games():
                                     if game_state == 2:
                                         clear_console()
                                         return RLGL()
-                                    else:
-                                     clear_console()
-                                     return RLGL()
-                                        
 
                             def game_over():
                                 global distance
@@ -567,9 +465,6 @@ def games():
                                 if game_state == 2:
                                     clear_console()
                                     return RLGL()
-                                else: 
-                                 clear_console()
-                                 return RLGL()
 
                             def main_game():
                                 input("Press Enter to Start")
@@ -648,9 +543,6 @@ def games():
                                 if game_state == 2:
                                     clear_console()
                                     RLGL()
-                                else:
-                                   clear_console()
-                                   return RLGL()
 
                             def main_game():
                                 input("Press Enter to Start")
@@ -733,9 +625,6 @@ def games():
                                     if game_state == 2:
                                         clear_console()
                                         RLGL()
-                                    else: 
-                                        clear_console()
-                                        return RLGL()
 
                             def game_over():
                                 global distance
@@ -750,9 +639,6 @@ def games():
                                     clear_console()
                                     return main_game()
                                 if game_state == 2:
-                                    clear_console()
-                                    return RLGL()
-                                else:
                                     clear_console()
                                     return RLGL()
 
@@ -833,9 +719,6 @@ def games():
                                     if game_state == 2:
                                         clear_console()
                                         return RLGL()
-                                    else:
-                                        clear_console()
-                                        return RLGL()                                       
 
                             def game_over():
                                 global distance
@@ -852,9 +735,6 @@ def games():
                                 if game_state == 2:
                                     clear_console()
                                     return RLGL()
-                                else:
-                                        clear_console()
-                                        return RLGL()    
 
                             def main_game():
                                 input("Press Enter to Start")
@@ -872,7 +752,7 @@ def games():
                             main_game()
                         def modes():
                           print("__________RLGL__________")
-                          print("GAME MODES:")
+                          print("home:")
                           print("1. Classic")
                           print("2. Unlimited")
                           print("3. Mystery")
@@ -895,8 +775,6 @@ def games():
                           elif gamemode == 5:
                            clear_console()
                            return RLGL() 
-                          else: modes()
-                           
                         def rules():
                             print("RULES")
                             print("Welcome to Redlight Greenlight!")
@@ -936,9 +814,6 @@ def games():
                         elif gamemode == 3:
                          clear_console()
                          return games() 
-                        else:
-                         clear_console()
-                         games()
                             
                          
                     
@@ -948,7 +823,7 @@ def games():
                    #  finish here REILIT
 
 
-                    print("Games")
+
                     print("1. Coin Flipper")
                     print("2. RPS")
                     print("3. Red Light | Green Light")
@@ -971,9 +846,6 @@ def games():
                     if option == 4:
                         clear_console()
                         return menu()
-                    else:
-                        clear_console()
-                        return menu()                       
 
 def YT_Analytics():
 
@@ -984,15 +856,8 @@ def YT_Analytics():
     app = 7
     enter_keyword = input("Enter a keyword: ")
     hows = input("Do you want titles beginning with How? (y/n): ")
-    
     enter_number = input("How many titles do you want: ")
-    if not enter_number.isdigit():
-         clear_console()  # Clear the console if invalid
-         print("RESULT", enter_number," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Title_Gen()
-    else: 
-            
-     num = int(enter_number)
+    num = int(enter_number)
     index = 0
 
     while index < num:
@@ -1017,15 +882,13 @@ def YT_Analytics():
             title = 'How to make A ' + keyword + " " + enter_keyword + ' in Minecraft'
         else:
             title = 'You need this ' + keyword + " " + enter_keyword + ' in Minecraft'
+
         print(title)
         index += 1
     exit_choice=input("Start Again: ")
     if  exit_choice.lower() == "y" or exit_choice.lower() == "yes" or  exit_choice.lower() == "":
        YT_Title_Gen()
     elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
-        clear_console()
-        return YT_Analytics()
-    else: 
         clear_console()
         return YT_Analytics()
 
@@ -1035,28 +898,9 @@ def YT_Analytics():
     global exit_choice, app
     app = 8
     print("YT Trend Calculator")
-    audience = input("Enter topic popularity: ")
-    if not audience.isdigit():
-         clear_console()  # Clear the console if invalid
-         print("RESULT", audience," IS NOT VALID, PLEASE START AGAIN")
-         return Trend_Calculator()
-    else: 
-            audience = int(audience)  
-    competition = input("Enter Competition: ")
-    if not competition.isdigit() or not (0 <= int(competition) <= 100):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", competition," IS NOT VALID, PLEASE START AGAIN")
-         return Trend_Calculator()
-    else: 
-            competition = int(competition)  
-    vidiq = input("Enter VidIQ Score: ")
-    if not vidiq.isdigit() or not (0 <= int(vidiq) <= 100):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", vidiq," IS NOT VALID, PLEASE START AGAIN")
-         return Trend_Calculator()
-    else: 
-            vidiq = int(vidiq)  
-    
+    audience = int(input("Enter topic popularity: "))
+    competition = int(input("Enter Competition: "))
+    vidiq = int(input("Enter VidIQ Score: "))
 
     # Determine the score based on audience
     score = 0  # Initialize 'score' with a default value
@@ -1117,57 +961,20 @@ def YT_Analytics():
     print("\n_______________________________________")
     exit_choice = input("Start Again: ")
     if exit_choice.lower() == "y" or exit_choice.lower() == "yes" or exit_choice.lower() == "":
-        clear_console()
         Trend_Calculator()
     elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
         clear_console()
         return YT_Analytics()
-    else: 
-        return YT_Analytics()
-        
-    
 
 
  def YT_Grade():
     global exit_choice, app
     app = 9
-    subscribers = input("Subscriber Count:")
-    if not subscribers.isdigit() or not (0 >= int(subscribers)):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", subscribers," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Grade()
-    else: 
-            subscribers = int(subscribers)  
-    
-    views = input("View Count:")
-    if not views.isdigit() or  not (0 >= int(views)):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", views," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Grade()
-    else: 
-            views = int(views)  
-    likes = input("Like Count:")
-    if not likes.isdigit() or not (0 >= int(likes)):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", likes," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Grade()
-    else: 
-            likes = int(likes)  
-    engagement = input("Engagement as % :")
-    if not engagement.isdigit() or not (0 >= int(engagement)):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", engagement," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Grade()
-    else: 
-            engagement = int(engagement)  
-    comment = input("Comment Count:")
-    if not comment.isdigit() or not (0 >= int(comment)):
-         clear_console()  # Clear the console if invalid
-         print("RESULT", comment," IS NOT VALID, PLEASE START AGAIN")
-         return YT_Grade()
-    else: 
-            comment = int(comment) 
-    
+    subscribers = int(input("Subscriber Count:"))
+    views = int(input("View Count:"))
+    likes = int(input("Like Count:"))
+    engagement = int(input("Engagement as % :"))
+    comment = int(input("Comment Count:"))
 
     # Grading System for views
     a_plus_views = 2 * subscribers
@@ -1441,14 +1248,9 @@ def YT_Analytics():
     print("##########################")
     exit_choice = input("Start Again: ")
     if  exit_choice.lower() == "y" or exit_choice.lower() == "yes" or  exit_choice.lower() == "":
-       clear_console()
        YT_Grade()
     elif exit_choice.lower() == "n" or exit_choice.lower() == "no":
         return YT_Analytics()
-    else:
-        clear_console()
-        return YT_Analytics()
- print ("YT Analytics")     
  print ("1.Title Generator")
  print ("2.Keyword Search")
  print ("3.YT Video Grade Calculator")
@@ -1468,10 +1270,6 @@ def YT_Analytics():
  if option == 4:
      clear_console()
      return menu()
- else: 
-     clear_console()
-     return menu()
-     
 
 
 
@@ -1481,13 +1279,13 @@ def menu():
  clear_console()
  print("###########################")
  print ("Menu")
- print("1. Grade Calculators")
- print("2. Games")
- print("3. Youtube Analytics")
+ print("1.Grade Calculators")
+ print("2.Games")
+ print("3.Youtube Analytics")
  print("4. Chat bot")
- print("5. Exit")
+ print("5.Exit")
  print ("___________")
- option = input("enter option: ")
+ option = int(input("enter option: "))
  print("")
  (input("Press Enter To continue"))
  clear_console()
@@ -1504,12 +1302,10 @@ def menu():
  elif option == 5:
   clear_console()
   exit()
- else: 
-    menu()
+
  input ("Press Enter To Continue")
  clear_console()
  print ("")
 
 
 menu()
-#Originally created by Dante Rosini under the  MIT  Licence
