@@ -385,7 +385,6 @@ def grad_calculators():
     option = int(input("Choose an Option (1-5)"))
     clear_console()
     print("")
-    (input("Press Enter To continue"))
     print("")
     if option == 1:
         weighted_calc()
@@ -994,7 +993,6 @@ def games():
                     option = input("Choose Option (1-3)")
                     clear_console()
                     print("")
-                    (input("Press Enter To continue"))
                     clear_console()
                     print("")
                     if option.isalpha():
@@ -1499,7 +1497,6 @@ def YT_Analytics():
  option = input("Choose An Option (1-4)")
  clear_console()
  print("")
- (input("Press Enter To continue"))
  print("")
  if option.isalpha():
      YT_Analytics()
@@ -1533,7 +1530,6 @@ def menu():
  print ("_____________________")
  option = input("enter option: ")
  print("")
- (input("Press Enter To continue"))
  clear_console()
  print("")
  if option.isalpha(): 
