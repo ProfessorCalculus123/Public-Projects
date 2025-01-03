@@ -1533,7 +1533,6 @@ def menu():
  print ("_____________________")
  option = input("enter option: ")
  print("")
- (input("Press Enter To continue"))
  clear_console()
  print("")
  if option.isalpha(): 
