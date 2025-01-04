@@ -113,7 +113,7 @@ def chat_bot():
             "Peace out", "Later", "Have a good one", "Farewell", "Adios", "Cya", "I'm out", "I'm done here", 
             "You can go now", "Shut up", "Leave me alone", "Stop talking", "Enough already", "I don’t need you anymore", 
             "Quit it", "Go away", "I'm sick of you", "You're annoying, goodbye", "Leave me be", "Stop responding", 
-            "Fuck off", "bye", "later", "later loser"
+            "fuck off", "bye", "later", "later loser"
         ]
         gratitude_phrases = [
             "Thank you", "Thanks a lot", "I appreciate it", "Thanks so much", "You're awesome, thanks", "I owe you one", 
@@ -904,7 +904,8 @@ def games():
                           print("2. Unlimited")
                           print("3. Mystery")
                           print("4. Practice")
-                          print("5.Exit")
+                          print("5. Blood Bath")
+                          print("6. Exit")
                           print("__________RLGL__________")
                           gamemode = input("Choose a game mode 1-4:")
                           if gamemode.isalpha():
@@ -923,12 +924,132 @@ def games():
                             clear_console()
                             Practice()
                           elif int(gamemode) == 5:
+                            clear_console()
+                            Rage()                         
+                          elif int(gamemode) == 6:
                            clear_console()
                            return RLGL() 
                           else: 
                               clear_console()
                               modes()
-                           
+                        def Rage():
+                            import random
+                            import time
+                            import os
+
+                            def new():
+                                global start_time, distance
+                                start_time = time.time()
+                                distance = 100
+                                return
+
+                            def time_check():
+                                global start_time
+                                currant_time = time.time()
+                                time_passed = currant_time - start_time
+                                print(round(240 - time_passed), " sec left")
+                                if time_passed > 240:
+                                    game_over()
+                                return
+
+                            def clear_console():
+                                os.system("cls" if os.name == "nt" else "clear")
+                                return
+
+                            def red_light_time():
+                                global distance
+                                print("Not Redlight")
+                                timer = random.randint(1, 3)
+                                starttimer = time.time()
+                                timepassed = 0
+                                while int(timepassed) < timer:
+                                    time_check()
+                                    currant_time = time.time()
+                                    timepassed = currant_time - starttimer
+                                    move = input("")
+                                    if move == "w":
+                                        clear_console()
+                                        distance -= 0.5
+                                        distance_check()
+                                        print(distance, "m")
+                                return
+
+                            def green_light_time():
+                                print("Not greenlight")
+                                starttimer = time.time()
+                                timepassed = 0
+                                while int(timepassed) < 3:
+                                    currant_time = time.time()
+                                    timepassed = currant_time - starttimer
+                                    if timepassed < 3:
+                                        move = input("")
+                                    if move == "w":
+                                        game_over()
+                                return
+
+                            def distance_check():
+                                if distance == 0:
+                                    print("_____________")
+                                    print("YOU WIN")
+                                    print("1.Retry")
+                                    print("2.Exit")
+                                    print("_____________")
+                                    game_state = input("Choose an option 1-2")
+                                    if game_state.isalpha():
+                                     clear_console()
+                                     distance_check()                                    
+                                    if int(game_state) == 1:
+                                        clear_console()
+                                        return main_game()
+                                    if int(game_state) == 2:
+                                        clear_console()
+                                        return RLGL()
+                                    else:
+                                        clear_console()
+                                        return distance_check()                                       
+
+                                        
+
+                            def game_over():
+                                global distance
+                                print("_____________")
+                                print("GAME OVER")
+                                print(distance, "m remaining")
+                                print("1.Retry")
+                                print("2.Exit")
+                                print("_____________")
+                                game_state = input("Choose an option 1-2")
+                                if game_state.isalpha():
+                                     clear_console()
+                                     game_over()
+                                if int(game_state) == 1:
+                                    clear_console()
+                                    return main_game()
+                                if int(game_state) == 2:
+                                    clear_console()
+                                    return RLGL()
+                                else:
+                                        clear_console()
+                                        return game_over()    
+
+
+                            def main_game():
+                                input("Press Enter to Start")
+                                new()
+                                game = True
+
+                                while game:
+                                    red_light_time()
+                                    clear_console()
+                                    distance_check()
+                                    time_check()
+                                    clear_console()
+                                    green_light_time()
+                                    clear_console()
+                                    time_check()
+                                    clear_console()
+
+                            main_game()                           
                         def rules():
                             print("RULES")
                             print("Welcome to Redlight Greenlight!")
@@ -944,7 +1065,8 @@ def games():
                             print("1. Classic: You have 120 seconds to get to the other side without being caught during the red light phase.")
                             print("2. Unlimited: See how far you can travel without getting caught.")
                             print("3. Mystery: Same as Classic, but the timer is hidden.")
-                            print("4. Practice: Same as Classic, but untimed.\n")
+                            print("4. Practice: Same as Classic, but untimed.")
+                            print ("5.Bloodbath: Twice the length, twice danger and twice the difficulty\n ")
 
                             print("I hope you enjoy the game!")
                             input("press enter to exit")
@@ -1558,5 +1680,3 @@ menu()
 # #However, I do not consent to this code being sold in its currant form or simular.
 #I request awknoledgement in code under the copy right act
 #i hope you enjoy
-
-
