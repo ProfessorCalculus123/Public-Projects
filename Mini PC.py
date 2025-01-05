@@ -978,10 +978,10 @@ def games():
                                 print("Not greenlight")
                                 starttimer = time.time()
                                 timepassed = 0
-                                while int(timepassed) < 3:
+                                while int(timepassed) < 1.5:
                                     currant_time = time.time()
                                     timepassed = currant_time - starttimer
-                                    if timepassed < 3:
+                                    if timepassed < 1.5:
                                         move = input("")
                                     if move == "w":
                                         game_over()
@@ -1293,7 +1293,7 @@ def YT_Analytics():
     global exit_choice, app
     app = 9
     subscribers = input("Subscriber Count:")
-    if not subscribers.isdigit() or not (0 >= int(subscribers)):
+    if not subscribers.isdigit() or  int(subscribers)  < 0 :
          clear_console()  # Clear the console if invalid
          print("RESULT", subscribers," IS NOT VALID, PLEASE START AGAIN")
          return YT_Grade()
@@ -1301,28 +1301,28 @@ def YT_Analytics():
             subscribers = int(subscribers)  
     
     views = input("View Count:")
-    if not views.isdigit() or  not (0 >= int(views)):
+    if not views.isdigit() or   int(views) < 0 :
          clear_console()  # Clear the console if invalid
          print("RESULT", views," IS NOT VALID, PLEASE START AGAIN")
          return YT_Grade()
     else: 
             views = int(views)  
     likes = input("Like Count:")
-    if not likes.isdigit() or not (0 >= int(likes)):
+    if not likes.isdigit() or  int(likes) < 0 :
          clear_console()  # Clear the console if invalid
          print("RESULT", likes," IS NOT VALID, PLEASE START AGAIN")
          return YT_Grade()
     else: 
             likes = int(likes)  
     engagement = input("Engagement as % :")
-    if not engagement.isdigit() or not (0 >= int(engagement)):
+    if not engagement.isdigit() or  int(engagement) < 0:
          clear_console()  # Clear the console if invalid
          print("RESULT", engagement," IS NOT VALID, PLEASE START AGAIN")
          return YT_Grade()
     else: 
             engagement = int(engagement)  
     comment = input("Comment Count:")
-    if not comment.isdigit() or not (0 >= int(comment)):
+    if not comment.isdigit() or  int(comment) < 0:
          clear_console()  # Clear the console if invalid
          print("RESULT", comment," IS NOT VALID, PLEASE START AGAIN")
          return YT_Grade()
@@ -1626,7 +1626,7 @@ def YT_Analytics():
      YT_Title_Gen()
  if int(option) == 2:
      Trend_Calculator()
- if option == 3:
+ if int(option) == 3:
      YT_Grade()
  if int(option) == 4:
      clear_console()
