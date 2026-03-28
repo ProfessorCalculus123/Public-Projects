@@ -1453,7 +1453,7 @@ def cybersec():
             print("____________")
 
             try:
-                print("Press Enter or Ctrl+C to stop the monitor.")
+                print("Press Enter to stop the monitor.")
                 input("")
             except KeyboardInterrupt:
                 pass
