@@ -131,7 +131,7 @@ def chat_bot():
             "Shut up", "Leave me alone", "Stop talking", "Enough already",
             "I don't need you anymore", "Quit it", "Go away", "I'm sick of you",
             "You're annoying, goodbye", "Leave me be", "Stop responding",
-            "fuck off", "bye", "later", "later loser",
+            "fuck off", "bye", "later", "later loser", "exit", "end"
         ]
         gratitude_phrases = [
             "Thank you", "Thanks a lot", "I appreciate it", "Thanks so much",
