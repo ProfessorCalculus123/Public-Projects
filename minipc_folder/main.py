@@ -1,13 +1,8 @@
 import os
-# Import your custom files
 import calculators
-
 import games
-
 import youtube
-
 import chatbot
-
 import security
 
 
