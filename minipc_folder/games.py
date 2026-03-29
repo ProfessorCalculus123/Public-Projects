@@ -545,3 +545,7 @@ def games():
             break
         else:
             clear_console()
+def run():
+    games()
+if __name__ == "__main__":
+    run()

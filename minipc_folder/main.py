@@ -1,10 +1,15 @@
 import os
 # Import your custom files
 import calculators
+
 import games
+
 import youtube
+
 import chatbot
+
 import security
+
 
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
@@ -27,22 +32,22 @@ def menu():
         
         if option == "1":
             clear_console()
-            calculators.grad_calculators() 
+            calculators.run()
         elif option == "2":
             clear_console()
-            games.games()
+            games.run()
             clear_console()
         elif option == "3":
             clear_console()
-            youtube.YT_Analytics()
+            youtube.run()
             clear_console()
         elif option == "4":
             clear_console()
-            chatbot.chat_bot()
+            chatbot.run()
             clear_console()
         elif option == "5":
             clear_console()
-            security.cybersec()
+            security.run()
             clear_console()
         elif option == "6":
             exit()

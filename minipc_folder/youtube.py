@@ -352,3 +352,7 @@ def YT_Analytics():
             break
         else:
             clear_console()
+def run():
+    YT_Analytics()
+if __name__ == "__main__":
+    run()

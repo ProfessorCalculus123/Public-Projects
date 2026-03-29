@@ -1,4 +1,4 @@
-import main
+
 import os
 
 def clear_console():
@@ -277,3 +277,8 @@ def grad_calculators():
         else:
             clear_console()
             print("RESULT", option, " IS NOT VALID, PLEASE START AGAIN")
+def run():
+    grad_calculators()
+    
+if __name__ == "__main__":
+    run()

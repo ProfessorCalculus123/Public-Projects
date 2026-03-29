@@ -1,5 +1,5 @@
 import os
-import main 
+
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 def cybersec():
@@ -169,3 +169,7 @@ def cybersec():
             break
         else:
             clear_console()
+def run():
+   cybersec()
+if __name__ == "__main__":
+    run()

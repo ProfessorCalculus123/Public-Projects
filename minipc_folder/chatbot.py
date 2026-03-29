@@ -154,3 +154,7 @@ def chat_bot():
         chat_you = input("You:")
         if not translations(chat_you):
             break
+def run():
+    chat_bot()
+if __name__ == "__main__":
+    run()
