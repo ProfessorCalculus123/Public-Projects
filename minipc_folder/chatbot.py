@@ -1,5 +1,5 @@
 
-import main
+
 import random
 import os
 def clear_console():
