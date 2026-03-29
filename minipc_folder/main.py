@@ -10,6 +10,7 @@ def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 
 def menu():
+    clear_console()
     while True:
         clear_console()
         print("______________________")
