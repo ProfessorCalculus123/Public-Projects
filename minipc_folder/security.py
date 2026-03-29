@@ -1,9 +1,8 @@
 import os
+import main 
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
-
 def cybersec():
-
     def Net_Analyser():
         try:
             from scapy.all import sniff, IP, TCP, UDP
@@ -146,3 +145,27 @@ def cybersec():
             else:
                 clear_console()
                 break
+
+    while True:
+        print("______________________________")
+        print("Cyber Security Tools:")
+        print("1.Network Analyser")
+        print("2.Exit")
+        print("______________________________")
+        option = input("Choose An Option (1-2): ")
+        clear_console()
+        print("\n\n")
+        try:
+            option_int = int(option)
+        except ValueError:
+            clear_console()
+            continue
+        
+        if option_int == 1:
+            clear_console()
+            Net_Analyser()
+        elif option_int == 2:
+            clear_console()
+            break
+        else:
+            clear_console()
