@@ -50,6 +50,7 @@ def cybersec():
             hostname = socket.gethostname()
             MY_IP = socket.gethostbyname(hostname)
             TARGET_IP = input("Enter IP address or press enter: ")
+            if TARGET_IP.lower() == 'q': break 
 
             if TARGET_IP == "":
                 TARGET_IP = MY_IP

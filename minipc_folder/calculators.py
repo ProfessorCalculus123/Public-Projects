@@ -13,6 +13,7 @@ def grad_calculators():
         while True:
             print("Weighted_Calculator")
             amount = input("How many assignments: ")
+            if amount.lower() == 'q': break 
             if not amount.isdigit() or not (1 <= int(amount) <= 100):
                 clear_console()
                 print("RESULT", amount, " IS NOT VALID, PLEASE START AGAIN")
@@ -25,6 +26,7 @@ def grad_calculators():
             
             for _ in range(amount):
                 weight = input("enter assignment weighting %: ")
+                if weight.lower() == 'q': break
                 if not weight.isdigit() or not (1 <= int(weight) <= 100):
                     clear_console()
                     print("RESULT", weight, " IS NOT VALID, PLEASE START AGAIN")
@@ -33,6 +35,7 @@ def grad_calculators():
                 weight = int(weight)
                 
                 grade = input("enter assignment grade: ")
+                if grade.lower() == 'q': break
                 if not grade.isdigit() or not (1 <= int(grade) <= 100):
                     clear_console()
                     print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
@@ -63,6 +66,7 @@ def grad_calculators():
         while True:
             print("Grade Goal Calculator")
             grade = input("Enter current Grade: ")
+            if grade.lower() == 'q': break
             if not grade.isdigit() or not (1 <= int(grade) <= 100):
                 clear_console()
                 print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
@@ -70,6 +74,7 @@ def grad_calculators():
             grade = int(grade)
             
             goal = input("Enter your goal grade: ")
+            if goal.lower() == 'q': break
             if not goal.isdigit() or not (1 <= int(goal) <= 100):
                 clear_console()
                 print("RESULT", goal, " IS NOT VALID, PLEASE START AGAIN")
@@ -77,6 +82,7 @@ def grad_calculators():
             goal = int(goal)
             
             weight = input("Enter Weight Of Final Assignment: ")
+            if weight.lower() == 'q': break
             if not weight.isdigit() or not (1 <= int(weight) <= 100):
                 clear_console()
                 print("RESULT", weight, " IS NOT VALID, PLEASE START AGAIN")
@@ -103,6 +109,7 @@ def grad_calculators():
         while True:
             print("GPA Calculator")
             amount = input("How many subjects are you calculating for: ")
+            if amount.lower() == 'q': break
             if not amount.isdigit():
                 clear_console()
                 print("RESULT", amount, " IS NOT VALID, PLEASE START AGAIN")
@@ -117,6 +124,7 @@ def grad_calculators():
             
             for _ in range(amount):
                 subject = input("enter subject name: ")
+                if subject.lower() == 'q': break
                 if subject.strip() == "":
                     clear_console()
                     print("RESULT", subject, " IS NOT VALID, PLEASE START AGAIN")
@@ -124,6 +132,7 @@ def grad_calculators():
                     break
                     
                 grade = input("enter subject grade: ")
+                if grade.lower() == 'q': break
                 if not grade.isdigit() or not (1 <= int(grade) <= 100):
                     clear_console()
                     print("RESULT", grade, " IS NOT VALID, PLEASE START AGAIN")
@@ -193,6 +202,7 @@ def grad_calculators():
         while True:
             print("GPA Goal Calculator")
             current_gpa = input("Enter Current GPA: ")
+            if current_gpa.lower() == 'q': break
             try:
                 current_gpa = float(current_gpa)
                 if not (0 <= current_gpa <= 4):
@@ -205,6 +215,7 @@ def grad_calculators():
                 continue
             
             goal_gpa = input("Enter Goal GPA: ")
+            if goal_gpa.lower() == 'q': break
             try:
                 goal_gpa = float(goal_gpa)
                 if not (0 <= goal_gpa <= 4):
@@ -217,6 +228,7 @@ def grad_calculators():
                 continue
             
             time_goal = input("How many semesters do you have to reach your goal: ")
+            if time_goal.lower() == 'q': break
             try:
                 time_goal = int(time_goal)
             except ValueError:

@@ -31,8 +31,11 @@ def chat_bot():
         while True:
             try:
                 num1 = int(input("bot: What is the first number? "))
+                if num1.lower() == 'q': break 
                 function = input("bot: What is the function? ")
+                if function.lower() == 'q': break 
                 num2 = int(input("bot: What is the second number? "))
+                if num2.lower() == 'q': break 
             except ValueError:
                 print("bot: sorry I can't help with that, can you please try again?")
                 continue

@@ -514,13 +514,72 @@ def games():
             else:
                 clear_console()
 
+    def guess_the_number():
+     global exit_choice, app
+     app = 11
+     money = 100 # Set once outside the loop
+     highscore = 100
+
+     while True:
+        clear_console()
+        print(f"--- Guess The Number ---")
+        print(f"Wallet: ${money} | Highscore: ${highscore}")
+        
+        if money <= 0:
+            print("________________________")
+            print("YOU ARE BROKE! Game Over.")
+            print("1. Retry\n2. Exit\n_____________")
+            game_state = input("Choose an option 1-2: ")
+            
+            if game_state == '1':
+                money = 100 
+                clear_console()
+                continue 
+            else:
+                clear_console()
+                break 
+
+                 
+
+        bet = input("Enter Betting Amount: ")
+        if bet.lower() == 'q': break
+        
+        if not bet.isdigit():
+            print("Invalid amount!")
+            time.sleep(1)
+            continue
+            
+        bet = int(bet)
+        if bet > money: bet = money
+        
+        # Game Logic
+        secret_number = random.randint(1, 10)
+        guess = input("Enter Guess (1-10): ")
+        
+        if not guess.isdigit(): continue
+        guess = int(guess)
+        
+        if guess == secret_number:
+            winnings = bet * 2
+            money += winnings - bet # Standard betting logic
+            print(f"CORRECT! You won ${winnings}. Total: ${money}")
+            if money > highscore:
+                highscore = money
+                print("NEW HIGHSCORE!")
+        else:
+            money -= bet
+            print(f"WRONG! The number was {secret_number}. Total: ${money}")
+            
+        input("\nPress Enter to Continue")
+    
     while True:
         print("______________________________")
         print("Games")
         print("1. Coin Flipper")
         print("2. RPS")
         print("3. Red Light | Green Light")
-        print("4. Exit")
+        print("4. Guess The Number")
+        print("5. Exit")
         print("______________________________")
         option = input("Choose Option (1-4): ")
         clear_console()
@@ -541,6 +600,9 @@ def games():
             clear_console()
             RLGL()
         elif option_int == 4:
+            clear_console()
+            guess_the_number()
+        elif option_int == 5:
             clear_console()
             break
         else:

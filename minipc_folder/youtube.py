@@ -14,9 +14,11 @@ def YT_Analytics():
         while True:
             print("Youtube Title Generator")
             enter_keyword = input("Enter a keyword: ")
+            if enter_keyword.lower() == 'q': break 
             hows = input("Do you want titles beginning with How? (y/n): ")
 
             enter_number = input("How many titles do you want: ")
+            if enter_number.lower() == 'q': break 
             if not enter_number.isdigit():
                 clear_console()
                 print("RESULT", enter_number, " IS NOT VALID, PLEASE START AGAIN")
@@ -47,6 +49,7 @@ def YT_Analytics():
                 print(title)
                 
             exit_choice = input("Start Again: ")
+            
             if exit_choice.lower() in ["y", "yes", ""]:
                 clear_console()
                 continue
@@ -60,6 +63,7 @@ def YT_Analytics():
         while True:
             print("YT Trend Calculator")
             audience = input("Enter topic popularity: ")
+            if audience.lower() == 'q': break 
             if not audience.isdigit():
                 clear_console()
                 print("RESULT", audience, " IS NOT VALID, PLEASE START AGAIN")
@@ -67,6 +71,7 @@ def YT_Analytics():
             audience = int(audience)
             
             competition = input("Enter Competition: ")
+            if competition.lower() == 'q': break 
             if not competition.isdigit() or not (0 <= int(competition) <= 100):
                 clear_console()
                 print("RESULT", competition, " IS NOT VALID, PLEASE START AGAIN")
@@ -74,6 +79,7 @@ def YT_Analytics():
             competition = int(competition)
             
             vidiq = input("Enter VidIQ Score: ")
+            if vidiq.lower() == 'q': break 
             if not vidiq.isdigit() or not (0 <= int(vidiq) <= 100):
                 clear_console()
                 print("RESULT", vidiq, " IS NOT VALID, PLEASE START AGAIN")
@@ -135,6 +141,7 @@ def YT_Analytics():
         app = 9
         while True:
             subscribers = input("Subscriber Count:")
+            if subscribers.lower() == 'q': break 
             if not subscribers.isdigit() or int(subscribers) < 0:
                 clear_console()
                 print("RESULT", subscribers, " IS NOT VALID, PLEASE START AGAIN")
@@ -142,6 +149,7 @@ def YT_Analytics():
             subscribers = int(subscribers)
 
             views = input("View Count:")
+            if views.lower() == 'q': break 
             if not views.isdigit() or int(views) < 0:
                 clear_console()
                 print("RESULT", views, " IS NOT VALID, PLEASE START AGAIN")
@@ -149,6 +157,7 @@ def YT_Analytics():
             views = int(views)
             
             likes = input("Like Count:")
+            if likes.lower() == 'q': break 
             if not likes.isdigit() or int(likes) < 0:
                 clear_console()
                 print("RESULT", likes, " IS NOT VALID, PLEASE START AGAIN")
@@ -156,6 +165,7 @@ def YT_Analytics():
             likes = int(likes)
             
             engagement = input("Engagement as % :")
+            if engagement.lower() == 'q': break 
             if not engagement.isdigit() or int(engagement) < 0:
                 clear_console()
                 print("RESULT", engagement, " IS NOT VALID, PLEASE START AGAIN")
@@ -163,6 +173,7 @@ def YT_Analytics():
             engagement = int(engagement)
             
             comment = input("Comment Count:")
+            if comment.lower() == 'q': break 
             if not comment.isdigit() or int(comment) < 0:
                 clear_console()
                 print("RESULT", comment, " IS NOT VALID, PLEASE START AGAIN")
