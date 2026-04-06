@@ -1,7 +1,12 @@
 import os
+import time
+import threading
+import socket
+from CoreWLAN import CWWiFiClient
 
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
+
 def cybersec():
     def Net_Analyser():
         try:
@@ -17,8 +22,6 @@ def cybersec():
             return
 
         from datetime import datetime           
-        import socket
-        import threading   
         SERVICE_MAP = {
             53: "DNS",
             80: "HTTP (WEB)",
@@ -124,7 +127,7 @@ def cybersec():
                 daemon=True
             )
             sniff_thread.start()
-
+            
             print(f"--- Monitoring live traffic for {TARGET_IP}---")
             print("____________")
             enhanced_scanner(TARGET_IP)
@@ -147,30 +150,70 @@ def cybersec():
                 clear_console()
                 break
 
+    def NST():
+        stop_event = threading.Event()
+
+        def signal_monitor():
+            print("--- M5 MacBook Signal Tracker ---")
+            print("Scanning live... Type 'n' and press Enter to stop.\n")
+            
+            while not stop_event.is_set():
+                client = CWWiFiClient.sharedWiFiClient()
+                interface = client.interface()
+                ssid = interface.ssid()
+                rssi = interface.rssiValue()
+                
+                if rssi != 0:
+                    bar_level = max(0, min(20, int((rssi + 100) / 3.5)))
+                    bar = "█" * bar_level + "-" * (20 - bar_level)
+                    
+                    if rssi >= -30: label = "Perfect"
+                    elif -50 <= rssi < -30: label = "Amazing"
+                    elif -60 <= rssi < -50: label = "Excellent"
+                    elif -70 <= rssi < -60: label = "Good"
+                    elif -80 <= rssi < -70: label = "Weak"
+                    elif -90 <= rssi < -80: label = "Dead Zone"
+                    else: label = "Noise"
+                    
+                    print(f"\rNetwork: {ssid} | Signal: [{bar}] {rssi} dBm ({label})", end="", flush=True)
+                time.sleep(0.5)
+
+        monitor_thread = threading.Thread(target=signal_monitor, daemon=True)
+        monitor_thread.start()
+
+        while True:
+            user_input = input().lower()
+            if user_input == 'n':
+                stop_event.set()
+                break
+
+        print("\n[!] Scanning finished. Returning to menu...")
+        time.sleep(1)
+        clear_console()
+
     while True:
         print("______________________________")
         print("Cyber Security Tools:")
-        print("1.Network Analyser")
-        print("2.Exit")
+        print("1. Network Analyser")
+        print("2. Network Strength Test")
+        print("3. Exit")
         print("______________________________")
-        option = input("Choose An Option (1-2): ")
-        clear_console()
-        print("\n\n")
-        try:
-            option_int = int(option)
-        except ValueError:
-            clear_console()
-            continue
+        option = input("Choose An Option (1-3): ")
         
-        if option_int == 1:
+        if option == "1":
             clear_console()
             Net_Analyser()
-        elif option_int == 2:
+        elif option == "2":
+            clear_console()
+            NST()    
+        elif option == "3":
             clear_console()
             break
         else:
             clear_console()
+
 def run():
-   cybersec()
+    cybersec()
+
 if __name__ == "__main__":
     run()
